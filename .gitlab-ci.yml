@@ -1,0 +1,53 @@
+stages:
+  - test_basic
+  - test_advanced
+  - benchmark
+
+variables:
+  GIT_STRATEGY: fetch
+
+run_basic_tests:
+  stage: test_basic
+  tags:
+      - adms_project1
+  only:
+    refs:
+      - master
+  script:
+    - echo "Running basic tests"
+    - cp -r /tmp/eval_dir/* .
+    - mkdir build && cd build
+    - cmake ..
+    - make -j8 olc_btree_basic
+    - ./olc_btree_basic
+
+run_advanced_tests:
+  stage: test_advanced
+  tags:
+      - adms_project1
+  only:
+    refs:
+      - master
+  script:
+    - echo "Running advanced tests"
+    - cp -r /tmp/eval_dir/* .
+    - mkdir build && cd build
+    - cmake ..
+    - make -j8 olc_btree_advanced
+    - ./olc_btree_advanced
+
+run_benchmark:
+  stage: benchmark
+  tags:
+      - adms_project1
+  only:
+    refs:
+      - master
+  script:
+    - echo "Running benchmark"
+    - cp -r /tmp/eval_dir/* .
+    - mkdir build && cd build
+    - cmake ..
+    - make -j8 olc_btree_bench
+    - ./olc_btree_bench
+
