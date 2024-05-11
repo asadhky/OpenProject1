@@ -53,6 +53,7 @@ struct BTreeLeaf : public BTreeLeafBase {
    void insert(Key k,Payload p); // Implement
    BTreeLeaf* split(Key& sep); // Implement 
    void BTreeLeaf::insertInLeaf(Key k, Payload p); 
+   void BTreeLeaf::insertAndSplitIfNeeded(Key k, Payload p);
 };
 
 // -------------------------------------------------------------------------------------
