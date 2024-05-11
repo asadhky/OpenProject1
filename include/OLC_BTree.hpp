@@ -51,7 +51,8 @@ struct BTreeLeaf : public BTreeLeafBase {
    bool isFull() { return count==maxEntries; };
    unsigned lowerBound(Key k); // Implement
    void insert(Key k,Payload p); // Implement
-   BTreeLeaf* split(Key& sep); // Implement  
+   BTreeLeaf* split(Key& sep); // Implement 
+   void BTreeLeaf::insertInLeaf(Key k, Payload p); 
 };
 
 // -------------------------------------------------------------------------------------
@@ -94,6 +95,6 @@ class OLC_BTree {
    uint64_t getHeight(){return height;}
    void upsert(Key k, Payload v); // implement upsert, i.e. insert or update if key exists
    bool lookup(Key k, Payload& result); // implement lookup
-   
+   void upsertInner(BTreeInner* innerNode, NodeBase* parent);
 };
 
