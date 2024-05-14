@@ -42,8 +42,8 @@ struct BTreeLeaf : public BTreeLeafBase {
    unsigned lowerBound(Key k); // Implement
    void insert(Key k,Payload p); // Implement
    BTreeLeaf* split(Key& sep); // Implement 
-   void BTreeLeaf::insertInLeaf(Key k, Payload p); 
-   void BTreeLeaf::insertAndSplitIfNeeded(Key k, Payload p);
+   void insertInLeaf(Key k, Payload p); 
+   void insertAndSplitIfNeeded(Key k, Payload p);
 };
 
 // -------------------------------------------------------------------------------------
