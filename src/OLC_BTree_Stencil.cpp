@@ -241,21 +241,46 @@ void OLC_BTree::makeRoot(Key k, NodeBase* leftChild, NodeBase* rightChild) {
     }
 }
 
-// int main() {
-//     OLC_BTree btree;
+int main() {
+    // Create an instance of the B-tree
+    OLC_BTree btree;
 
-//     btree.upsert(10, 100);
-//     btree.upsert(20, 200);
-//     btree.upsert(15, 150);
+    // Test upsert function
+    std::cout << "Testing upsert function..." << std::endl;
 
-//     Payload result;
-//     if (btree.lookup(20, result)) {
-//         std::cout << "Value for key 20: " << result << std::endl;
-//     } else {
-//         std::cout << "Key 20 not found." << std::endl;
-//     }
+    // Insert some key-value pairs
+    btree.upsert(10, 100);
+    btree.upsert(20, 200);
+    btree.upsert(30, 300);
 
-//     btree.upsert(25, 250);
+    // Update an existing key-value pair
+    btree.upsert(20, 250);
+
+    // Insert a new key-value pair
+    btree.upsert(40, 400);
+
+    // Look up some key-value pairs
+    Payload result;
+    bool found;
+
+    found = btree.lookup(10, result);
+    std::cout << "Key 10 found: " << (found ? "true" : "false") << ", Value: " << result << std::endl;
+
+    found = btree.lookup(20, result);
+    std::cout << "Key 20 found: " << (found ? "true" : "false") << ", Value: " << result << std::endl;
+
+    found = btree.lookup(30, result);
+    std::cout << "Key 30 found: " << (found ? "true" : "false") << ", Value: " << result << std::endl;
+
+    found = btree.lookup(40, result);
+    std::cout << "Key 40 found: " << (found ? "true" : "false") << ", Value: " << result << std::endl;
+
+    // Test with a key that doesn't exist
+    found = btree.lookup(50, result);
+    std::cout << "Key 50 found: " << (found ? "true" : "false") << std::endl;
+
+    return 0;
+}
 
 //     std::cout << "Tree height: " << btree.getHeight() << std::endl;
 
