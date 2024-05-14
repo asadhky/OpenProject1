@@ -114,8 +114,6 @@ BTreeInner* BTreeInner::split(Key& sep) {
     }
 }
 
-void makeRoot(Key k, NodeBase* leftChild, NodeBase* rightChild);
-
 void BTreeInner::insert(Key k, NodeBase* child) {
     bool restart = false;
     while (true) {
@@ -179,6 +177,7 @@ void OLC_BTree::upsert(Key k, Payload v) {
         if (!restart) {
             return;
         }
+        std::cout << "Restarting upsert function..." << std::endl;
     }
 }
 
