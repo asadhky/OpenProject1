@@ -2,16 +2,6 @@
 
 #include "OptLatch.hpp"
 // -------------------------------------------------------------------------------------
-// BTREE NODES
-// -------------------------------------------------------------------------------------
-// Methods could be
-// - lowerBound
-// - split
-// - insert
-// for both node types, i.e., inner and leaf
-// The Nodes are internal to your B-Tree logic, therefore feel free to change them
-// the given methods here are just a blueprint and can be changed as you see fit
-// -------------------------------------------------------------------------------------
 
 using Key = uint64_t;
 using Payload = uint64_t;
@@ -52,8 +42,8 @@ struct BTreeLeaf : public BTreeLeafBase {
    unsigned lowerBound(Key k); // Implement
    void insert(Key k,Payload p); // Implement
    BTreeLeaf* split(Key& sep); // Implement 
-   void insertInLeaf(Key k, Payload p); 
-   void insertAndSplitIfNeeded(Key k, Payload p);
+   void BTreeLeaf::insertInLeaf(Key k, Payload p); 
+   void BTreeLeaf::insertAndSplitIfNeeded(Key k, Payload p);
 };
 
 // -------------------------------------------------------------------------------------
